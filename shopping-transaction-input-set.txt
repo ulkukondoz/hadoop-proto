@@ -1,0 +1,5 @@
+t1,p3,uid1,$300,sweater
+t2,p1,uid2,$100,chicken
+t3,p1,uid1,$100,chicken
+t4,p2,uid2,$10,banana
+t5,p4,uid4,$9,apple

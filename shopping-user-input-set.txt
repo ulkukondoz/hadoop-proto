@@ -1,0 +1,4 @@
+uid1,a@mail.com,EN,US
+uid2,b@mail.com,EN,GB
+uid3,c@mail.com,EN,CA
+uid4,d@mail.com,FR,CA
