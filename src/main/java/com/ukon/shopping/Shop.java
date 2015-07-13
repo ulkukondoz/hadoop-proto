@@ -17,25 +17,26 @@ public class Shop {
         conf.set("", "");
         conf.set("input-set", "");
 
-        Job jobTransaction = new Job(conf);
-        jobTransaction.setJobName("shop-transaction");
+        Job job = new Job(conf);
+        job.setJobName("shop-transaction");
 
-        jobTransaction.setJarByClass(TransactionMapper.class);
-        jobTransaction.setReducerClass(ShoppingReducer.class);
+//        job.setJarByClass(TransactionMapper.class);
+//        job.setJarByClass(UserMapper.class);
 
-        jobTransaction.setMapOutputKeyClass(Text.class);
-        jobTransaction.setOutputValueClass(Text.class);
+        job.setReducerClass(ShoppingReducer.class);
 
+        job.setMapOutputKeyClass(Text.class);
+        job.setOutputValueClass(Text.class);
 
-        jobTransaction.setOutputKeyClass(Text.class);
-        jobTransaction.setOutputValueClass(Text.class);
+        job.setOutputKeyClass(Text.class);
+        job.setOutputValueClass(Text.class);
 
-        MultipleInputs.addInputPath(jobTransaction, new Path("shopping-user-input-set.txt"), TextInputFormat.class, UserMapper.class);
-        MultipleInputs.addInputPath(jobTransaction, new Path("shopping-transaction-input-set.txt"), TextInputFormat.class, TransactionMapper.class);
+        MultipleInputs.addInputPath(job, new Path("shopping-user-input-set.txt"), TextInputFormat.class, UserMapper.class);
+        MultipleInputs.addInputPath(job, new Path("shopping-transaction-input-set.txt"), TextInputFormat.class, TransactionMapper.class);
 
-        FileOutputFormat.setOutputPath(jobTransaction, new Path("shopping-output2-set.txt"));
+        FileOutputFormat.setOutputPath(job, new Path("shopping-output2-set.txt"));
 
-        System.exit(jobTransaction.waitForCompletion(true) ? 0 : 1);
+        System.exit(job.waitForCompletion(true) ? 0 : 1);
 
     }
 

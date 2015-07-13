@@ -15,7 +15,7 @@ public class UserMapper extends Mapper<LongWritable, Text, Text, Text>
 		String uid = lines[0];
 		String location = lines[3];
 
-        System.out.println("--- TRAN MAP : uid : " + uid + " location : " + location);
+        System.out.println("--- USER MAP : uid : " + uid + " location : " + location);
         context.write(new Text(uid), new Text("lid" + location));
     }
 }

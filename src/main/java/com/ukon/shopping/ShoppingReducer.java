@@ -12,20 +12,21 @@ public class ShoppingReducer extends Reducer<Text, Text, Text, Text>
         System.out.println("======== REDUCER =========");
 
         Text location = new Text("UNKNOWN - LOCATION");
-        Text product = new Text("UNKNOWN - PROD");
+        Text product = new Text("UNKNOWN - PRODUCT");
 
         for (Text value : values) {
             System.out.println("<K- V> " + key + " " + value );
             if(value.toString().contains("lid")) {
                 location = new Text(value);
-                continue;
             }
 
             if(value.toString().contains("pid")) {
                 product = new Text(value);
             }
 
-            context.write(product, location);
+            if(!location.toString().equals("UNKNOWN - LOCATION")  && !product.toString().equals("UNKNOWN - PRODUCT")) {
+                context.write(product, location);
+            }
         }
     }
 }
